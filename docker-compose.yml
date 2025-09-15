@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  inventory-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: e-commerce-web
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:3000
+    volumes:
+      - ./public:/app/public:ro
